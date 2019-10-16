@@ -91,27 +91,27 @@ namespace maqueen {
 
     //% weight=100
     //% blockGap=50
-    //% blockId=IR_callbackUser block="on IR received"
-    export function IR_callbackUser(maqueencb: (message: number) => void) {
-        maqueenInit();
-        IR_callback(() => {
-            const packet = new Packeta();
-            packet.mye = maqueene;
-            maqueenparam = getParam();
-            packet.myparam = maqueenparam;
-            maqueencb(packet.myparam);
-        });
-    }
+    //% blockId=IR_callbackUser block="on IR received"      --- 当接收到红外时运行
+    // export function IR_callbackUser(maqueencb: (message: number) => void) {
+    //     maqueenInit();
+    //     IR_callback(() => {
+    //         const packet = new Packeta();
+    //         packet.mye = maqueene;
+    //         maqueenparam = getParam();
+    //         packet.myparam = maqueenparam;
+    //         maqueencb(packet.myparam);
+    //     });
+    // }
 
     //% weight=10
-    //% blockId=IR_read block="read IR"
-    export function IR_read(): number {
-        maqueenInit()
-        return getParam()
-    }
+    //% blockId=IR_read block="read IR"                     --- 红外的值
+    // export function IR_read(): number {
+    //     maqueenInit()
+    //     return getParam()
+    // }
 
     //% weight=10
-    //% blockId=IR_read_version block="Get product information"
+    //% blockId=IR_read_version block="Get product information"     --- 获取产品信息
     export function IR_read_version(): string {
         maqueenInit()
         pins.i2cWriteNumber(0x10, 50, NumberFormat.UInt8BE);
